@@ -4,9 +4,23 @@ img {
 	max-width: 100%;
 }
 
+#gameContainer {
+	display: flex;
+}
+
+.kitten {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	margin: 1%;
+	padding: 0 1%;
+	width: 45%;
+}
+
 .catPhoto {
-	width: 40%;
-	margin: 5% 10%;
+	width: 90%;
+	margin: 5% 5%;
 }
 
 .clickCounter {
