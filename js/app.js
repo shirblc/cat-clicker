@@ -1,5 +1,4 @@
-let catsNames = ["Katy", "Ginger"];
-let catsURLS = ["1562-cute-little-cat.jpg","tiny-kitten-in-field.jpg"];
+let catsNames = ["Katy", "Ginger", "Cider", "Marie", "Molly"];
 let cats = [];
 let currentlyLoadedCat = 1;
 
@@ -39,7 +38,8 @@ function initCats()
 {
 	for(var i = 0; i < catsNames.length; i++)
 		{
-			let cat = new Cat(catsNames[i], (i+1), catsURLS[i]);
+			let catURL = "imgs/kitty" + (i+1) + ".jpg";
+			let cat = new Cat(catsNames[i], (i+1), catURL);
 			cats.push(cat);
 		}
 }
