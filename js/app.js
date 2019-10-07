@@ -1,6 +1,8 @@
 let numClicksCat1 = 0;
 let numClicksCat2 = 0;
 let catsNames = ["Katy", "Ginger"];
+let catsURLS = ["1562-cute-little-cat.jpg","tiny-kitten-in-field.jpg"];
+let cats = [];
 
 class Cat
 	{
@@ -16,6 +18,7 @@ document.getElementById("catPhoto1").addEventListener("click", increaseClickNum)
 document.getElementById("catPhoto2").addEventListener("click", increaseClickNum);
 
 buildNavigationMenu();
+initCats();
 showCatName();
 
 function buildNavigationMenu()
@@ -28,6 +31,15 @@ function buildNavigationMenu()
 			menuItem.className = "menuItem";
 			menuItem.id = "menuItem" + i;
 			navMenu.appendChild(menuItem);
+		}
+}
+
+function initCats()
+{
+	for(var i = 0; i < catsNames.length; i++)
+		{
+			let cat = new Cat(catsNames[i], (i+1), catsURLS[i]);
+			cats.push(cat);
 		}
 }
 
