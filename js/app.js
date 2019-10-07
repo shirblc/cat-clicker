@@ -1,6 +1,7 @@
 let catsNames = ["Katy", "Ginger"];
 let catsURLS = ["1562-cute-little-cat.jpg","tiny-kitten-in-field.jpg"];
 let cats = [];
+let currentlyLoadedCat = 1;
 
 class Cat
 	{
@@ -13,20 +14,21 @@ class Cat
 		}
 	}
 
-document.getElementById("catPhoto").addEventListener("click", increaseClickNum);
+document.querySelector(".catPhoto").addEventListener("click", increaseClickNum);
 
-buildNavigationMenu();
 initCats();
+buildNavigationMenu();
 
 function buildNavigationMenu()
 {
+	let navMenu = document.querySelector("#navMenu");
+	
 	for(var i = 1; i <= catsNames.length; i++)
 		{
-			let navMenu = document.querySelector("#navMenu");
-			
 			let menuItem = document.createElement("button");
 			menuItem.className = "menuItem";
 			menuItem.id = "menuItem" + i;
+			menuItem.textContent = cats[i-1].catName;
 			navMenu.appendChild(menuItem);
 		}
 	
@@ -44,17 +46,16 @@ function initCats()
 
 function showCatDetails(e)
 {
-	let chosenCatNum = e.target.id.substring(8,1);
+	let chosenCatNum = e.target.id.substr(8,1);
 	
 	document.querySelector(".counterNumber").textContent = cats[chosenCatNum-1].numClicks;
 	document.querySelector(".kittenName").textContent = cats[chosenCatNum-1].catName;
 	document.querySelector(".catPhoto").setAttribute("src", cats[chosenCatNum-1].catPicture);
+	currentlyLoadedCat = chosenCatNum;
 }
 
 function increaseClickNum(e)
 {
-	let catNum = e.target.id.substr(e.target.id.length - 1, 1);
-	
-	cats[catNum-1].numClicks++;
-	document.querySelector(".counterNumber").textContent = cats[chosenCatNum-1].numClicks;
+	cats[currentlyLoadedCat-1].numClicks++;
+	document.querySelector(".counterNumber").textContent = cats[currentlyLoadedCat-1].numClicks;
 }
