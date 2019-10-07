@@ -1,8 +1,19 @@
 let numClicksCat1 = 0;
 let numClicksCat2 = 0;
+let catsNames = ["Katy", "Ginger"];
 
 document.getElementById("catPhoto1").addEventListener("click", increaseClickNum);
 document.getElementById("catPhoto2").addEventListener("click", increaseClickNum);
+
+showCatName();
+
+function showCatName()
+{
+	for(var i = 0; i < catsNames.length; i++)
+		{
+			document.getElementById("kittenName" + (i + 1)).textContent = catsNames[i];
+		}
+}
 
 function increaseClickNum(e)
 {
