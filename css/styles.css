@@ -8,3 +8,15 @@ img {
 	width: 80%;
 	margin: 5% 10%;
 }
+
+#clickCounter {
+	text-align: center;
+	font-family: 'Julius Sans One', sans-serif;
+	font-weight: bold;
+	padding-top: 2em;
+}
+
+#counterNumber {
+	color: darkblue;
+	font-weight: bolder;
+}
