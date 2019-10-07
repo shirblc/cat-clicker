@@ -6,25 +6,26 @@ img {
 
 #gameContainer {
 	display: flex;
+	align-content: center;
 }
 
 #navMenu {
 	width: 200px;
-	height: 100%;
-	position: sticky;
-	top: 0;
 	left: 0;
 	display: flex;
 	flex-direction: column;
+	align-content: center;
+	margin: 10px;
 }
 
-.navItem {
+.menuItem {
 	width: 200px;
-	height: 10%;
 	text-align: center;
 	font-family: 'Julius Sans One', sans-serif;
 	font-weight: bold;
-	font-size: 30px;
+	font-size: 20px;
+	padding: 7px;
+	margin: 5px;
 }
 
 .kitten {
@@ -32,9 +33,9 @@ img {
 	flex-direction: column;
 	align-content: center;
 	justify-content: center;
-	margin: 1%;
+	margin: 2%;
 	padding: 0 1%;
-	width: 45%;
+	width: 85%;
 }
 
 .catPhoto {
