@@ -4,19 +4,19 @@ img {
 	max-width: 100%;
 }
 
-#catPhoto {
-	width: 80%;
+.catPhoto {
+	width: 40%;
 	margin: 5% 10%;
 }
 
-#clickCounter {
+.clickCounter {
 	text-align: center;
 	font-family: 'Julius Sans One', sans-serif;
 	font-weight: bold;
 	padding-top: 2em;
 }
 
-#counterNumber {
+.counterNumber {
 	color: darkblue;
 	font-weight: bolder;
 }
