@@ -19,7 +19,6 @@ document.getElementById("catPhoto2").addEventListener("click", increaseClickNum)
 
 buildNavigationMenu();
 initCats();
-showCatName();
 
 function buildNavigationMenu()
 {
@@ -32,6 +31,8 @@ function buildNavigationMenu()
 			menuItem.id = "menuItem" + i;
 			navMenu.appendChild(menuItem);
 		}
+	
+	document.querySelector("#navMenu").addEventListener("click", showCatDetails);
 }
 
 function initCats()
@@ -43,12 +44,13 @@ function initCats()
 		}
 }
 
-function showCatName()
+function showCatDetails(e)
 {
-	for(var i = 0; i < catsNames.length; i++)
-		{
-			document.getElementById("kittenName" + (i + 1)).textContent = catsNames[i];
-		}
+	let chosenCatNum = e.target.id.substring(8,1);
+	
+	document.querySelector(".counterNumber").textContent = 0;
+	document.querySelector(".kittenName").textContent = cats[chosenCatNum-1].catName;
+	document.querySelector(".catPhoto").setAttribute("src", cats[chosenCatNum-1].catPicture);
 }
 
 function increaseClickNum(e)
