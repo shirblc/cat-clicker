@@ -5,7 +5,21 @@ let catsNames = ["Katy", "Ginger"];
 document.getElementById("catPhoto1").addEventListener("click", increaseClickNum);
 document.getElementById("catPhoto2").addEventListener("click", increaseClickNum);
 
+buildNavigationMenu();
 showCatName();
+
+function buildNavigationMenu()
+{
+	for(var i = 1; i <= catsNames.length; i++)
+		{
+			let navMenu = document.querySelector("#navMenu");
+			
+			let menuItem = document.createElement("button");
+			menuItem.className = "menuItem";
+			menuItem.id = "menuItem" + i;
+			navMenu.appendChild(menuItem);
+		}
+}
 
 function showCatName()
 {
