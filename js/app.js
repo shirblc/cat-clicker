@@ -2,6 +2,16 @@ let numClicksCat1 = 0;
 let numClicksCat2 = 0;
 let catsNames = ["Katy", "Ginger"];
 
+class Cat
+	{
+		constructor(catName,catNumber,catPicture)
+		{
+			this.catName = catName;
+			this.catNumber = catNumber;
+			this.catPicture = catPicture;
+		}
+	}
+
 document.getElementById("catPhoto1").addEventListener("click", increaseClickNum);
 document.getElementById("catPhoto2").addEventListener("click", increaseClickNum);
 
