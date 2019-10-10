@@ -1,6 +1,6 @@
-let catsNames = ["Katy", "Ginger", "Cider", "Marie", "Molly"];
+/*let catsNames = ["Katy", "Ginger", "Cider", "Marie", "Molly"];
 let cats = [];
-let currentlyLoadedCat = 1;
+let currentlyLoadedCat = 1;*/
 
 class Cat
 	{
@@ -13,49 +13,82 @@ class Cat
 		}
 	}
 
-document.querySelector(".catPhoto").addEventListener("click", increaseClickNum);
-
-initCats();
-buildNavigationMenu();
-
-function buildNavigationMenu()
-{
-	let navMenu = document.querySelector("#navMenu");
-	
-	for(var i = 1; i <= catsNames.length; i++)
+let Model = 
+	{
+		cats: [],
+		currentlyLoadedCat: 1,
+		
+		initCats()
 		{
-			let menuItem = document.createElement("button");
-			menuItem.className = "menuItem";
-			menuItem.id = "menuItem" + i;
-			menuItem.textContent = cats[i-1].catName;
-			navMenu.appendChild(menuItem);
-		}
-	
-	document.querySelector("#navMenu").addEventListener("click", showCatDetails);
-}
+			let catsNames = ["Katy", "Ginger", "Cider", "Marie", "Molly"];
+			
+			for(var i = 0; i < catsNames.length; i++)
+			{
+				let catURL = "imgs/kitty" + (i+1) + ".jpg";
+				let cat = new Cat(catsNames[i], (i+1), catURL);
+				Model.cats.push(cat);
+			}
+		},
+	}
 
-function initCats()
-{
-	for(var i = 0; i < catsNames.length; i++)
+let Octopus = 
+	{
+		init()
 		{
-			let catURL = "imgs/kitty" + (i+1) + ".jpg";
-			let cat = new Cat(catsNames[i], (i+1), catURL);
-			cats.push(cat);
+			Model.initCats();
+			View.buildNavigationMenu();
+		},
+		
+		getCat(numCat)
+		{
+			Model.currentlyLoadedCat = numCat;
+			return Model.cats[numCat-1];
+		},
+		
+		getLength()
+		{
+			return Model.cats.length;
+		},
+		
+		increaseClickNum()
+		{
+			Model.cats[Model.currentlyLoadedCat-1].numClicks++;
+			document.querySelector(".counterNumber").textContent = Model.cats[Model.currentlyLoadedCat-1].numClicks;
 		}
-}
+	}
 
-function showCatDetails(e)
-{
-	let chosenCatNum = e.target.id.substr(8,1);
-	
-	document.querySelector(".counterNumber").textContent = cats[chosenCatNum-1].numClicks;
-	document.querySelector(".kittenName").textContent = cats[chosenCatNum-1].catName;
-	document.querySelector(".catPhoto").setAttribute("src", cats[chosenCatNum-1].catPicture);
-	currentlyLoadedCat = chosenCatNum;
-}
+let View = 
+	{
+		catDetails: Octopus.getCat(1),
+		
+		buildNavigationMenu()
+		{
+			let navMenu = document.querySelector("#navMenu");
+			let numButtons = Octopus.getLength();
+			
+			for(var i = 1; i <= numButtons; i++)
+			{
+				let menuItem = document.createElement("button");
+				menuItem.className = "menuItem";
+				menuItem.id = "menuItem" + i;
+				menuItem.textContent = "Cat " + i;
+				navMenu.appendChild(menuItem);
+			}
+			
+			navMenu.addEventListener("click", View.showCatDetails);
+			document.querySelector(".catPhoto").addEventListener("click", Octopus.increaseClickNum);
+		},
+		
+		showCatDetails(e)
+		{
+			let chosenCatNum = e.target.id.substr(8,1);
+			
+			View.catDetails = Octopus.getCat(chosenCatNum);
+			
+			document.querySelector(".counterNumber").textContent = View.catDetails.numClicks;
+			document.querySelector(".kittenName").textContent = View.catDetails.catName;
+			document.querySelector(".catPhoto").setAttribute("src", View.catDetails.catPicture);
+		},
+	}
 
-function increaseClickNum(e)
-{
-	cats[currentlyLoadedCat-1].numClicks++;
-	document.querySelector(".counterNumber").textContent = cats[currentlyLoadedCat-1].numClicks;
-}
+Octopus.init();
