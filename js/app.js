@@ -75,6 +75,12 @@ let View =
 				navMenu.appendChild(menuItem);
 			}
 			
+			let adminButton = document.createElement("button");
+			adminButton.className = "menuItem";
+			adminButton.id = "adminButton";
+			adminButton.textContent = "Admin Mode";
+			navMenu.appendChild(adminButton);
+			
 			navMenu.addEventListener("click", View.showCatDetails);
 			document.querySelector(".catPhoto").addEventListener("click", Octopus.increaseClickNum);
 		},
