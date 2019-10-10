@@ -107,13 +107,16 @@ let View =
 		
 		showCatDetails(e)
 		{
-			let chosenCatNum = e.target.id.substr(8,1);
+			if(e.target.id.substr(0,8) == "menuItem")
+				{
+					let chosenCatNum = e.target.id.substr(8,1);
+			
+					View.catDetails = Octopus.getCat(chosenCatNum);
 
-			View.catDetails = Octopus.getCat(chosenCatNum);
-
-			document.querySelector(".counterNumber").textContent = View.catDetails.numClicks;
-			document.querySelector(".kittenName").textContent = View.catDetails.catName;
-			document.querySelector(".catPhoto").setAttribute("src", View.catDetails.catPicture);
+					document.querySelector(".counterNumber").textContent = View.catDetails.numClicks;
+					document.querySelector(".kittenName").textContent = View.catDetails.catName;
+					document.querySelector(".catPhoto").setAttribute("src", View.catDetails.catPicture);
+				}
 		},
 		
 		openAdminMenu(catDetails)
