@@ -61,3 +61,23 @@ img {
 	font-weight: bold;
 	padding-top: 1em;
 }
+
+#adminForm {
+	visibility: hidden;
+	text-align: center;
+	font-family: 'Julius Sans One', sans-serif;
+	padding-top: 1em;
+}
+
+.formField {
+	line-height: 2em;
+}
+
+#adminForm button {
+	text-align: center;
+	font-family: 'Julius Sans One', sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 7px;
+	margin: 5px;
+}
