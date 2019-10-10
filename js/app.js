@@ -54,12 +54,31 @@ let Octopus =
 		{
 			Model.cats[Model.currentlyLoadedCat-1].numClicks++;
 			document.querySelector(".counterNumber").textContent = Model.cats[Model.currentlyLoadedCat-1].numClicks;
+		},
+		
+		adminMode()
+		{
+			if(!View.isAdminMenu)
+				{
+					View.isAdminMenu = true;
+					View.openAdminMenu(Model.cats[Model.currentlyLoadedCat-1]);
+				}
+		},
+		
+		saveChanges()
+		{
+			Model.cats[Model.currentlyLoadedCat-1].catName = document.querySelector("#catName").value;
+			Model.cats[Model.currentlyLoadedCat-1].catPicture = document.querySelector("#catURL").value;
+			Model.cats[Model.currentlyLoadedCat-1].numClicks = document.querySelector("#clickNum").value;
+			
+			document.getElementById("menuItem" + Model.currentlyLoadedCat).click();
 		}
 	}
 
 let View = 
 	{
 		catDetails: Octopus.getCat(1),
+		isAdminMenu: false,
 		
 		buildNavigationMenu()
 		{
@@ -80,6 +99,7 @@ let View =
 			adminButton.id = "adminButton";
 			adminButton.textContent = "Admin Mode";
 			navMenu.appendChild(adminButton);
+			adminButton.addEventListener("click", Octopus.adminMode);
 			
 			navMenu.addEventListener("click", View.showCatDetails);
 			document.querySelector(".catPhoto").addEventListener("click", Octopus.increaseClickNum);
@@ -88,13 +108,35 @@ let View =
 		showCatDetails(e)
 		{
 			let chosenCatNum = e.target.id.substr(8,1);
-			
+
 			View.catDetails = Octopus.getCat(chosenCatNum);
-			
+
 			document.querySelector(".counterNumber").textContent = View.catDetails.numClicks;
 			document.querySelector(".kittenName").textContent = View.catDetails.catName;
 			document.querySelector(".catPhoto").setAttribute("src", View.catDetails.catPicture);
 		},
+		
+		openAdminMenu(catDetails)
+		{
+			document.querySelector("#adminForm").style.visibility = "visible";
+			document.querySelector("#catName").value = catDetails.catName;
+			document.querySelector("#catURL").value = catDetails.catPicture;
+			document.querySelector("#clickNum").value = catDetails.numClicks;
+			
+			document.querySelector("#saveChanges").addEventListener("click", View.closeMenu);
+			document.querySelector("#cancelChanges").addEventListener("click", View.closeMenu);
+		},
+		
+		closeMenu(e)
+		{
+			if(e.target.id == "saveChanges")
+				{
+					Octopus.saveChanges();
+				}
+			
+			document.querySelector("#adminForm").style.visibility = "hidden";
+			View.isAdminMenu = false;
+		}
 	}
 
 Octopus.init();
