@@ -1,14 +1,17 @@
 /* CSS Document */
 
+/* Cat picture */
 img {
 	max-width: 100%;
 }
 
+/* Game container */
 #gameContainer {
 	display: flex;
 	align-content: center;
 }
 
+/* Navigation menu */
 #navMenu {
 	width: 200px;
 	left: 0;
@@ -18,6 +21,7 @@ img {
 	margin: 10px;
 }
 
+/* Menu item */
 .menuItem {
 	width: 200px;
 	text-align: center;
@@ -28,6 +32,7 @@ img {
 	margin: 5px;
 }
 
+/* Cat container */
 .kitten {
 	display: flex;
 	flex-direction: column;
@@ -38,11 +43,13 @@ img {
 	width: 85%;
 }
 
+/* Cat photo */
 .catPhoto {
 	width: 90%;
 	margin: 5% 5%;
 }
 
+/* Cat click counter */
 .clickCounter {
 	text-align: center;
 	font-family: 'Julius Sans One', sans-serif;
@@ -50,11 +57,13 @@ img {
 	padding-top: 2em;
 }
 
+/* Cat click counter - number */
 .counterNumber {
 	color: darkblue;
 	font-weight: bolder;
 }
 
+/* Cat name */
 .kittenName {
 	text-align: center;
 	font-family: 'Julius Sans One', sans-serif;
@@ -62,6 +71,7 @@ img {
 	padding-top: 1em;
 }
 
+/* Admin form */
 #adminForm {
 	visibility: hidden;
 	text-align: center;
@@ -69,10 +79,12 @@ img {
 	padding-top: 1em;
 }
 
+/* Admin form input field */
 .formField {
 	line-height: 2em;
 }
 
+/* Admin form button */
 #adminForm button {
 	text-align: center;
 	font-family: 'Julius Sans One', sans-serif;
